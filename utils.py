@@ -1,5 +1,6 @@
 import os
 import random
+import model.Client
 
 class utils():
     def __init__(self):
