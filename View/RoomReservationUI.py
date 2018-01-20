@@ -19,14 +19,15 @@ class RoomReservationUI():
         self.client = None
         self.client_num = None
         self.reservation_num = None
-        self.menu = "Please input number to give command:\n" \
-                    "   1-->add date searching filter\n" \
+        self.main_menu = "Please input number to give command:\n" \
+                    "   1-->reserve room\n"\
+                    "   2-->check reservation\n" \
+                    "   3-->cancel reservation\n" \
+                    "   4-->exit"
+        self.sub_menu = "   1-->add date searching filter\n" \
                     "   2-->change type searching filter\n" \
                     "   3-->delete data searching filter\n" \
-                    "   4-->search rooms\n" \
-                    "   5-->check reservation\n" \
-                    "   6-->cancel reservation\n" \
-                    "   7-->exit"
+                    "   4-->search rooms\n"
 
     def inputDateSearchCondition(self):
         year = input("Please input year: ").strip()
@@ -247,23 +248,28 @@ class RoomReservationUI():
 
     def mainMenu(self):
         while(True):
-            self.util.normalPrint(self.menu)
+            self.util.normalPrint(self.main_menu)
             command = input("Input command: ").strip()
             if(self.util.check_int(command)):
                 command = int(command)
                 if(command == 1):
-                    self.inputDateSearchCondition()
+                    self.util.normalPrint(self.sub_menu)
+                    command_sub = input("Input command: ").strip()
+                    if (self.util.check_int(command_sub)):
+                        command_sub = int(command_sub)
+                        if command_sub == 1 :
+                            self.inputDateSearchCondition()
+                        elif(command_sub == 2):
+                            self.inputTypeSearchCondition()
+                        elif(command_sub == 3):
+                            self.deleteDateSearchCondition()
+                        elif(command_sub == 4):
+                            self.searchRoom()
                 elif(command == 2):
-                    self.inputTypeSearchCondition()
-                elif(command == 3):
-                    self.deleteDateSearchCondition()
-                elif(command == 4):
-                    self.searchRoom()
-                elif(command == 5):
                     self.checkReservation()
-                elif(command == 6):
+                elif(command == 3):
                     self.cancelReservation()
-                elif(command == 7):
+                elif(command == 4):
                     break
                 else:
                     self.showWarning("format")
