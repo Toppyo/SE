@@ -37,6 +37,8 @@ class utils():
         self.check_path(self.input_path)
         with open(self.input_path + self.client_file, mode='r+') as input:
             for line in input.readlines():
+                if line.strip() == "":
+                    continue
                 info = line.split()
                 # print(info)
                 if (int(info[0]) == client_num):
@@ -67,6 +69,8 @@ class utils():
         self.check_path(self.input_path)
         with open(self.input_path + self.reservation_file, mode='r+') as input:
             for index, line in enumerate(input.readlines()):
+                if line.strip() == "":
+                    continue
                 if date == line.split(':')[0]:
                     found = [x.strip() for x in line.split(':')[1].split(',')]
                     index_found = index
@@ -82,6 +86,8 @@ class utils():
         with open(self.input_path+self.reservation_detailed_file, mode='r+') as input:
             for index, line in enumerate(input.readlines()):
                 # self.debugPrint(line.split()[0])
+                if line.strip() == "":
+                    continue
                 if reservation_num == int(line.split()[0]):
                     reservation_client = int(line.split()[1])
                     reservation_detail = {x.split(':')[0]: x.split(':')[1] for x in line.split()[2].split(',')}
@@ -179,6 +185,8 @@ class utils():
             changes = {}
             for key in details.keys():
                 for index, reservation in enumerate(reservations):
+                    if reservation.strip() == "":
+                        continue
                     if(key == reservation.split(': ')[0]):
                         _list = reservation.strip().split(': ')[1].split(', ')
                         _list.remove(details[key])
