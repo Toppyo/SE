@@ -88,6 +88,7 @@ class HotelManagementProcessor():
                 output.write(input_str)
             self.change_line_in_file(self.input_path+self.reservation_detailed_file, index_found,
                                      after=' '.join([str(reservation_num), str(client), self.dict2str(details), "1"]))
+
     def checkout_by_reservation(self, reservation_num):
         client, details, index_found, checkin = self.check_reservation_num(reservation_num)
         price = 0
@@ -165,3 +166,13 @@ class HotelManagementProcessor():
         print('\n' + "Debug information: "+ string + '\n')
         print("############################################################################################\n"
               "############################################################################################\n")
+
+    def check_state(self, checkin_num):
+        state= ""
+        if checkin_num == 0:
+            state = "Reserved"
+        elif checkin_num == 1:
+            state = "Checked in"
+        elif checkin_num == 2:
+            state = "Checked out"
+        return state
