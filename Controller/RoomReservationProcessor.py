@@ -5,7 +5,7 @@ class RoomReservationProcessor():
 
     def __init__(self):
         self.calendar_dict = {}
-        self.input_path = './locals/'
+        self.input_path = '../locals/'
         self.state_file = 'state.txt'
         self.client_file = 'client.txt'
         self.hotel_file = 'hotel.txt'
@@ -192,3 +192,13 @@ class RoomReservationProcessor():
         print('\n' + "Debug information: "+ string + '\n')
         print("############################################################################################\n"
               "############################################################################################\n")
+
+    def check_state(self, checkin_num):
+        state= ""
+        if checkin_num == 0:
+            state = "Reserved"
+        elif checkin_num == 1:
+            state = "Checked in"
+        elif checkin_num == 2:
+            state = "Checked out"
+        return state
