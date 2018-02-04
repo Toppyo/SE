@@ -236,8 +236,6 @@ class RoomReservationUI():
                 self.showWarning("signin")
                 sys.exit(0)
             else:
-                # TODO self.client = client(client_num)
-                # TODO self.rrp.normalPrint("Welcome " + client.name)
                 self.rrp.normalPrint("Welcome " + client_name + " san!")
                 self.client_num = int(client_num)
                 self.mainMenu()

@@ -26,7 +26,7 @@ class HotelManagerUI():
             self.showWarning("format")
             level = input("Please input level for registration: \n")
             _continue = self.hmp.check_int(level) and int(level)<4
-        # TODO register(name, level)
+            self.hmp.add_client(level, name)
         self.hmp.normalPrint("Registration for " + name + " san succeed!")
         return
 
@@ -35,8 +35,6 @@ class HotelManagerUI():
         if (self.hmp.check_int(manager_num)):
             client_level = self.hmp.check_client(int(manager_num))[0]
             if client_level == 3:
-                # TODO self.client = client(client_num)
-                # TODO self.util.normalPrint("Welcome " + manager.name)
                 self.mainMenu()
             else:
                 self.showWarning("signin")
